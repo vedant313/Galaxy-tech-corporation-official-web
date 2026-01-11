@@ -102,89 +102,86 @@ gap:40px; align-items:start; }
   font-size:14px;
   background:linear-gradient(180deg,#020617,#000);
 }
-/* ================= MOBILE RESPONSIVE FIX ================= */
+/* ================= MOBILE HERO & HEADER POLISH ================= */
 
-@media (max-width: 900px){
+@media (max-width: 768px){
 
   /* HEADER */
+  .topbar{
+    padding: 8px 0;
+  }
+
   .nav{
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+  }
+
+  nav{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 14px;
   }
 
   nav a{
-    margin-left: 12px;
+    margin-left: 0;
     font-size: 14px;
   }
 
-  /* HERO */
+  /* HERO SECTION */
   .hero{
     grid-template-columns: 1fr;
     text-align: center;
+    gap: 24px;
+  }
+
+  .badge{
+    font-size: 11px;
+    padding: 6px 14px;
   }
 
   .hero h1{
-    font-size: 32px;
+    font-size: 28px;
     line-height: 1.3;
+    margin: 12px 0;
   }
 
+  .hero p{
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* HERO BUTTONS */
   .hero-actions{
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    align-items: center;
+    gap: 14px;
+    margin-top: 24px;
   }
 
   .hero-actions .btn{
     width: 100%;
-    max-width: 260px;
-    text-align: center;
+    max-width: 280px;
+    margin: auto;
+    padding: 14px;
+    font-size: 15px;
   }
 
-  /* SERVICES / PROJECTS */
-  .grid-3{
-    grid-template-columns: 1fr;
+  .btn.outline{
+    margin-left: 0;
   }
-
-  .grid-2{
-    grid-template-columns: 1fr;
-  }
-
-  /* PROJECT PAGE FIX */
-  .project-grid{
-    grid-template-columns: 1fr;
-  }
-
-  .screenshots img{
-    height: 260px;
-  }
-
-  /* META INFO */
-  .meta{
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
 }
 
-/* EXTRA SMALL PHONES */
-@media (max-width: 480px){
+/* ================= EXTRA SMALL PHONES ================= */
 
-  .container{
-    padding: 40px 16px;
-  }
+@media (max-width: 420px){
 
   .hero h1{
-    font-size: 26px;
+    font-size: 24px;
   }
 
-  .project-header h1{
-    font-size: 28px;
-  }
-
-  .app-title img{
-    width: 42px;
-    height: 42px;
+  .hero p{
+    font-size: 14px;
   }
 
   nav a{
