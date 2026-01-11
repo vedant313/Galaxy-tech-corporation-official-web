@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap'); *{margin:0;padding:0;box-sizing:border-box} body{ font-family:Poppins,sans-serif; background:radial-gradient(circle at top,#0b1224,#020617); color:#e5e7eb; } .container{max-width:1200px;margin:auto;padding:60px 20px} .section h2{margin-bottom:30px;font-size:32px} .topbar{ background:#000; border-bottom:1px solid rgba(255,255,255,.05); } .nav{ display:flex; justify-content:space-between; align-items:center; padding:16px 20px; } .logo{font-weight:700} .logo span{color:#38bdf8} nav a{ margin-left:20px; color:#cbd5f5; text-decoration:none; } .hero{ display:grid; grid-template-columns:1.2fr .8fr; gap:40px; } .hero h1{font-size:42px;margin:16px 0} .hero p{color:#9ca3af} .badge{ display:inline-block; padding:6px 14px; border-radius:999px; background:linear-gradient(90deg,#38bdf8,#8b5cf6); color:#000; font-size:12px; font-weight:700; } .hero-actions{margin-top:20px} .btn{ display:inline-block; padding:12px 22px; border-radius:12px; font-weight:600; text-decoration:none; } .btn.primary{ background:linear-gradient(90deg,#38bdf8,#8b5cf6); color:#000; } .btn.outline{ border:1px solid #334155; color:#e5e7eb; margin-left:10px; } .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px} .grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:20px} .card{ background:linear-gradient(180deg,#0f172a,#020617); border:1px solid rgba(255,255,255,.06); border-radius:18px; padding:24px; } .card a{color:#38bdf8;text-decoration:none} .contact input, .contact textarea{ width:100%; padding:12px 16px; border-radius:12px; } 
+/* ================= PROJECT PAGE ================= */ 
+.project-page{ min-height:80vh; } 
+.project-grid{ display:grid;
+grid-template-columns:1fr 1.2fr;
+gap:40px; align-items:start; }
+ .project-media img{ width:100%; border-radius:16px; }
+ .project-info h1{ font-size:34px; margin-bottom:12px; }
+ .project-info p{ color:#9ca3af; margin-bottom:20px; }
+ .feature-list{ list-style:none; padding:0; margin-bottom:24px; }
+ .feature-list li{ padding:10px 0; border-bottom:1px solid rgba(255,255,255,.08); } .project-actions .btn{ margin-right:12px; margin-top:10px; } /* Responsive */ @media(max-width:900px){ .project-grid{ grid-template-columns:1fr; } } 
+/* ================= PROJECT DETAILS PAGE ================= */
+ .project-header{ margin-bottom:30px; }
+ .project-header h1{ font-size:36px; } 
+ .project-header p{ color:#9ca3af; margin-top:6px; } 
+ .project-page{ min-height:80vh; } 
+ .project-grid{ display:grid; grid-template-columns:1.1fr 1fr; gap:40px; }
+ .project-media{ padding:20px; }
+
+/* ================= SCREENSHOTS (PLAY STORE STYLE) ================= */
+
+.screenshots{
+  display:flex;
+  gap:18px;
+  overflow-x:auto;
+  padding:10px 0;
+  scroll-snap-type:x mandatory;
+}
+
+.screenshots::-webkit-scrollbar{
+  display:none;
+}
+
+.screenshots img{
+  height:320px;                 /* 🔥 BADA SIZE */
+  width:auto;
+  border-radius:20px;
+  cursor:pointer;
+  scroll-snap-align:start;
+  background:#020617;
+  box-shadow:0 15px 40px rgba(0,0,0,0.45);
+  transition:transform .3s ease;
+}
+
+.screenshots img:hover{
+  transform:scale(1.06);
+}
+
+/* ================= META & FEATURES ================= */
+
+.meta{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px;
+  margin:20px 0;
+  font-size:14px;
+  color:#cbd5f5;
+}
+
+.feature-list{
+  list-style:none;
+  padding:0;
+}
+
+.feature-list li{
+  padding:10px 0;
+  border-bottom:1px solid rgba(255,255,255,.08);
+}
+
+/* ================= PROJECT ACTIONS ================= */
+
+.project-actions{
+  margin-top:20px;
+}
+
+.project-actions .btn{
+  margin-right:10px;
+  margin-top:10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:900px){
+  .project-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:600px){
+  .screenshots img{
+    height:260px;              /* 📱 MOBILE BALANCE */
+  }
+}
+
+/* ================= FOOTER ================= */
+
+.footer{
+  text-align:center;
+  padding:20px;
+  color:#94a3b8;
+  border-top:1px solid rgba(255,255,255,0.05);
+  font-size:14px;
+  background:linear-gradient(180deg,#020617,#000);
+}
