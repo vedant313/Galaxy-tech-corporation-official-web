@@ -1,290 +1,334 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
 
-/* ================= RESET ================= */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+/* ================= RESET & BASE ================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-body{
-  font-family:Poppins,sans-serif;
-  background:radial-gradient(circle at top,#0b1224,#020617);
-  color:#e5e7eb;
-  line-height:1.6;
+body {
+  font-family: 'Poppins', sans-serif;
+  background: radial-gradient(circle at top, #0b1224, #020617);
+  color: #e5e7eb;
+  line-height: 1.6;
 }
 
 /* ================= GLOBAL ================= */
-.container{
-  max-width:1200px;
-  margin:auto;
-  padding:64px 20px;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
-.section h2{
-  font-size:30px;
-  margin-bottom:28px;
+.section {
+  padding: 80px 0;
 }
 
-/* ================= HEADER ================= */
-.topbar{
-  background:#000;
-  border-bottom:1px solid rgba(255,255,255,.06);
+.section h2 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 2.5rem;
 }
 
-.nav{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:14px 20px;
+/* ================= HEADER / TOPBAR ================= */
+.topbar {
+  background: #000;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-.logo{
-  font-weight:700;
-  font-size:18px;
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
 }
 
-.logo span{
-  color:#38bdf8;
+.logo {
+  font-weight: 700;
+  font-size: 1.4rem;
 }
 
-nav{
-  display:flex;
-  align-items:center;
-  gap:18px;
+.logo span {
+  color: #38bdf8;
 }
 
-nav a{
-  color:#cbd5f5;
-  text-decoration:none;
-  font-size:15px;
+nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
-/* ================= HERO (DESKTOP) ================= */
-.hero{
-  display:grid;
-  grid-template-columns:1.2fr .8fr;
-  gap:48px;
-  align-items:center;
+nav a {
+  color: #cbd5f5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.3s;
 }
 
-.badge{
-  display:inline-block;
-  padding:6px 16px;
-  border-radius:999px;
-  background:linear-gradient(90deg,#38bdf8,#8b5cf6);
-  color:#000;
-  font-size:11px;
-  font-weight:700;
+nav a:hover {
+  color: #38bdf8;
 }
 
-.hero h1{
-  font-size:44px;
-  margin:18px 0;
-  line-height:1.2;
+/* ================= HERO ================= */
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 60px;
+  align-items: center;
+  padding: 100px 0 80px;
 }
 
-.hero p{
-  color:#9ca3af;
-  max-width:520px;
+.badge {
+  display: inline-block;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+  color: #000;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin-bottom: 1.2rem;
 }
 
-.hero-actions{
-  margin-top:28px;
-  display:flex;
-  gap:14px;
+.hero h1 {
+  font-size: 3.2rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin: 0 0 1.2rem;
+}
+
+.hero p {
+  color: #9ca3af;
+  font-size: 1.1rem;
+  max-width: 520px;
+}
+
+.hero-actions {
+  margin-top: 2rem;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 }
 
 /* ================= BUTTONS ================= */
-.btn{
-  padding:14px 26px;
-  border-radius:14px;
-  font-weight:600;
-  text-decoration:none;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
+.btn {
+  padding: 14px 28px;
+  border-radius: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
 }
 
-.btn.primary{
-  background:linear-gradient(90deg,#38bdf8,#8b5cf6);
-  color:#000;
+.btn.primary {
+  background: linear-gradient(90deg, #38bdf8, #8b5cf6);
+  color: #000;
 }
 
-.btn.outline{
-  border:1px solid #334155;
-  color:#e5e7eb;
+.btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(56, 189, 248, 0.35);
 }
 
-/* ================= CARDS / GRIDS ================= */
-.grid-3{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:22px;
+.btn.outline {
+  border: 1px solid #334155;
+  color: #e5e7eb;
 }
 
-.grid-2{
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:22px;
+.btn.outline:hover {
+  background: rgba(255, 255, 255, 0.05);
 }
 
-.card{
-  background:linear-gradient(180deg,#0f172a,#020617);
-  border:1px solid rgba(255,255,255,.06);
-  border-radius:20px;
-  padding:26px;
+/* ================= CARDS & GRIDS ================= */
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
 }
 
-/* ================= CONTACT ================= */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+}
+
+.card {
+  background: linear-gradient(180deg, #0f172a, #020617);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 28px;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+}
+
+/* ================= CONTACT FORM ================= */
 .contact input,
-.contact textarea{
-  width:100%;
-  padding:14px 16px;
-  border-radius:14px;
-  background:#020617;
-  border:1px solid rgba(255,255,255,.12);
-  color:#fff;
+.contact textarea {
+  width: 100%;
+  padding: 16px;
+  border-radius: 14px;
+  background: #020617;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: white;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+
+.contact textarea {
+  min-height: 140px;
+  resize: vertical;
 }
 
 /* ================= PROJECT PAGE ================= */
-.project-header h1{
-  font-size:36px;
+.project-header h1 {
+  font-size: 2.6rem;
+  margin-bottom: 0.5rem;
 }
 
-.project-header p{
-  color:#9ca3af;
-  margin-top:6px;
+.project-header p {
+  color: #9ca3af;
 }
 
-.project-grid{
-  display:grid;
-  grid-template-columns:1.1fr 1fr;
-  gap:40px;
+.project-grid {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 48px;
+  margin-top: 2.5rem;
 }
 
-/* Screenshots */
-.screenshots{
-  display:flex;
-  gap:18px;
-  overflow-x:auto;
-  padding:10px 0;
+.screenshots {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  padding: 12px 0;
+  scroll-snap-type: x mandatory;
 }
 
-.screenshots::-webkit-scrollbar{display:none}
-
-.screenshots img{
-  height:300px;
-  border-radius:18px;
-  box-shadow:0 14px 36px rgba(0,0,0,.45);
+.screenshots::-webkit-scrollbar {
+  display: none;
 }
 
-/* Meta */
-.meta{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:12px;
-  font-size:14px;
-  color:#cbd5f5;
-  margin:20px 0;
+.screenshots img {
+  height: 340px;
+  border-radius: 18px;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5);
+  flex-shrink: 0;
+  scroll-snap-align: start;
 }
 
 /* ================= FOOTER ================= */
-.footer{
-  text-align:center;
-  padding:22px;
-  font-size:14px;
-  color:#94a3b8;
-  border-top:1px solid rgba(255,255,255,.06);
-  background:linear-gradient(180deg,#020617,#000);
+.footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  color: #94a3b8;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  background: linear-gradient(180deg, #020617, #000);
 }
 
 /* ================================================= */
-/* ============ MOBILE-ONLY LAYOUT FIX ============== */
+/* ============== RESPONSIVE (MOBILE) ============== */
 /* ================================================= */
 
-@media (max-width: 900px){
+@media (max-width: 900px) {
 
-  /* 🔹 PC layout ko bilkul mat chhedo */
-  .hero{
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  /* Hero - fully stacked & centered */
+  .hero {
     grid-template-columns: 1fr;
     text-align: center;
+    padding: 70px 0 50px;
+    gap: 40px;
   }
 
-  /* 🔹 Founder Vision PC wala mobile me HIDE */
-  .hero-right{
-    display: none;
+  .hero h1 {
+    font-size: 2.4rem;
   }
 
-  /* 🔹 Mobile hero spacing */
-  .hero-left{
+  .hero p {
+    font-size: 1rem;
     max-width: 100%;
   }
 
-  .badge{
-    margin: 0 auto 12px;
+  .badge {
+    margin: 0 auto 1rem;
   }
 
-  .hero h1{
-    font-size: 26px;
-    line-height: 1.3;
-  }
-
-  .hero p{
-    font-size: 14px;
-    max-width: 90%;
-    margin: 0 auto;
-  }
-
-  /* 🔹 Buttons stack (app-like) */
-  .hero-actions{
+  .hero-actions {
     flex-direction: column;
     align-items: center;
-    gap: 12px;
+    gap: 14px;
   }
 
-  .hero-actions .btn{
+  .btn {
     width: 100%;
-    max-width: 280px;
+    max-width: 320px;
+    padding: 16px;
+    font-size: 1rem;
+  }
+
+  /* Founder vision - desktop wala hide, mobile wala show */
+  .hero .hero-right,
+  .desktop-only {
+    display: none !important;
+  }
+
+  .mobile-only {
+    display: block !important;
+    margin: 40px 0;
+  }
+
+  /* Grids → single column */
+  .grid-3,
+  .grid-2,
+  .project-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Project screenshots smaller on mobile */
+  .screenshots img {
+    height: 280px;
+  }
+
+  /* Header nav - simple (hamburger baad mein add kar sakte hain) */
+  nav {
+    display: none; /* abhi ke liye hide, future me hamburger */
+  }
+
+  .nav {
     justify-content: center;
   }
-
-  /* 🔹 Mobile-only Founder Vision card */
-  .mobile-only{
-    display: block;
-  }
-
-  .desktop-only{
-    display: none;
-  }
-
 }
 
-/* ============ DESKTOP SAFETY (FORCE) ============ */
-@media (min-width: 901px){
-  .mobile-only{
-    display: none;
-  }
-}
-
-/* ================= FIX DUPLICATE FOUNDER VISION ================= */
-
-/* By default (PC) */
-.desktop-only{
-  display:block !important;
-}
-
-.mobile-only{
-  display:none !important;
-}
-
-/* Mobile only */
-@media (max-width:900px){
-  .desktop-only{
-    display:none !important;
+/* Extra small phones */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 2.1rem;
   }
 
-  .mobile-only{
-    display:block !important;
+  .section h2 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    padding: 20px;
   }
 }
