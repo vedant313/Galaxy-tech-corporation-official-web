@@ -58,7 +58,7 @@ if (appKey && apps[appKey]) {
   const downloadBtn = document.getElementById("download");
   if (downloadBtn) downloadBtn.href = app.download;
 
-  // SCREENSHOTS (DYNAMIC – PLAY STORE STYLE)
+  // SCREENSHOTS 
   const shotsContainer = document.querySelector(".screenshots");
   if (shotsContainer) {
     shotsContainer.innerHTML = "";
