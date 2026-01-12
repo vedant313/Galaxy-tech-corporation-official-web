@@ -200,93 +200,73 @@ nav a{
 }
 
 /* ================================================= */
-/* ================= MOBILE UI (REAL REDESIGN) ===== */
+/* ============ MOBILE-ONLY LAYOUT FIX ============== */
 /* ================================================= */
 
-@media(max-width:900px){
+@media (max-width: 900px){
 
-  /* HEADER */
-  .nav{
-    flex-direction:column;
-    gap:10px;
-  }
-
-  nav{
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:14px;
-  }
-
-  nav a{
-    font-size:14px;
-  }
-
-  /* HERO MOBILE */
+  /* 🔹 PC layout ko bilkul mat chhedo */
   .hero{
-    grid-template-columns:1fr;
-    text-align:center;
-    gap:26px;
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  /* 🔹 Founder Vision PC wala mobile me HIDE */
+  .hero-right{
+    display: none;
+  }
+
+  /* 🔹 Mobile hero spacing */
+  .hero-left{
+    max-width: 100%;
+  }
+
+  .badge{
+    margin: 0 auto 12px;
   }
 
   .hero h1{
-    font-size:30px;
-    line-height:1.3;
+    font-size: 26px;
+    line-height: 1.3;
   }
 
   .hero p{
-    font-size:15px;
-    margin:auto;
-    max-width:92%;
+    font-size: 14px;
+    max-width: 90%;
+    margin: 0 auto;
   }
 
+  /* 🔹 Buttons stack (app-like) */
   .hero-actions{
-    flex-direction:column;
-    align-items:center;
-    gap:14px;
-    margin-top:26px;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
   }
 
   .hero-actions .btn{
-    width:100%;
-    max-width:280px;
-    padding:15px;
-    font-size:15px;
+    width: 100%;
+    max-width: 280px;
+    justify-content: center;
   }
 
-  /* GRIDS */
-  .grid-3,
-  .grid-2{
-    grid-template-columns:1fr;
+  /* 🔹 Mobile-only Founder Vision card */
+  .mobile-only{
+    display: block;
   }
 
-  .project-grid{ 
-    grid-template-columns:1fr;
+  .desktop-only{
+    display: none;
   }
 
-  .meta{
-    grid-template-columns:1fr;
-  }
+}
 
-  .screenshots img{
-    height:260px;
+/* ============ DESKTOP SAFETY (FORCE) ============ */
+@media (min-width: 901px){
+  .mobile-only{
+    display: none;
   }
 }
 
-/* EXTRA SMALL PHONES */
-@media(max-width:420px){
-
-  .hero h1{
-    font-size:24px;
-  }
-
-  .hero p{
-    font-size:14px;
-  }
-
-  nav a{
-    font-size:13px;
-  }
-}
 /* ================= FIX DUPLICATE FOUNDER VISION ================= */
 
 /* By default (PC) */
