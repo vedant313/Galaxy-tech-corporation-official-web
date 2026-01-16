@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project Details – Galaxy Tech Corporation</title>
 
-  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
@@ -52,10 +51,7 @@
 
     .project-page { padding: 2rem 0 4rem; }
 
-    .project-header {
-      text-align: center;
-      margin-bottom: 2.5rem;
-    }
+    .project-header { text-align: center; margin-bottom: 2.5rem; }
 
     .app-title {
       display: flex;
@@ -121,7 +117,7 @@
       font-size: 0.95rem;
     }
 
-    /* Rating & Feedback */
+    /* Feedback Section */
     .feedback-section {
       margin-top: 3rem;
       padding-top: 2rem;
@@ -147,12 +143,12 @@
       background: rgba(30,40,60,0.6);
       color: var(--text);
       resize: vertical;
-      margin: 1rem 0;
+      margin: 1rem 0 0.8rem;
     }
 
     .upload-btn {
       display: block;
-      margin: 1rem 0;
+      margin: 0.8rem 0;
       padding: 0.8rem 1.5rem;
       background: rgba(99,102,241,0.15);
       border: 1px solid var(--primary);
@@ -163,9 +159,9 @@
 
     #preview-img {
       max-width: 100%;
-      max-height: 200px;
+      max-height: 180px;
       border-radius: 12px;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       display: none;
     }
 
@@ -194,6 +190,55 @@
     }
 
     .project-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+
+    /* Reviews List */
+    .reviews-list {
+      margin-top: 2.5rem;
+    }
+
+    .review-item {
+      background: rgba(30, 40, 60, 0.4);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .review-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.6rem;
+    }
+
+    .review-user {
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .review-date {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    .review-stars {
+      color: var(--star-active);
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .review-text {
+      font-size: 0.95rem;
+      color: var(--text);
+    }
+
+    .review-screenshot {
+      max-width: 100%;
+      max-height: 180px;
+      border-radius: 10px;
+      margin-top: 0.8rem;
+      display: block;
+    }
 
     /* Modal */
     .image-modal {
@@ -226,7 +271,7 @@
     @media (max-width: 900px) {
       .project-grid { grid-template-columns: 1fr; }
       .screenshots img { height: 320px; }
-      nav { display: none; } /* Add hamburger later if needed */
+      nav { display: none; }
       .nav { justify-content: center; }
     }
 
@@ -261,14 +306,11 @@
   </div>
 
   <div class="project-grid">
-
-    <!-- LEFT: Media / Screenshots -->
     <div class="project-media card">
       <h3>Screenshots</h3>
       <div class="screenshots" id="screenshots"></div>
     </div>
 
-    <!-- RIGHT: Info -->
     <div class="project-info card">
       <h3>About This App</h3>
       <p>Ved AI is your personal coding companion powered by advanced AI. Get instant help with code explanations, debugging, learning new concepts, and more – completely offline capable!</p>
@@ -292,10 +334,8 @@
       </a>
 
       <div class="project-actions">
-        <a href="downloads/ved-ai-assistant-v1.2.0.apk" 
-           download="Ved-AI-Assistant-v1.2.0.apk" 
-           class="btn primary">
-           ⬇ Download App
+        <a href="downloads/ved-ai-assistant-v1.2.0.apk" download="Ved-AI-Assistant-v1.2.0.apk" class="btn primary">
+          ⬇ Download App
         </a>
         <a href="index.html" class="btn outline">← Back to Home</a>
       </div>
@@ -306,7 +346,7 @@
     </div>
   </div>
 
-  <!-- User Rating & Feedback -->
+  <!-- Feedback & Reviews -->
   <div class="card feedback-section">
     <h3>Rate & Review This Project</h3>
     <p>Tell us what you think!</p>
@@ -327,11 +367,14 @@
     </label>
     <img id="preview-img" alt="Preview">
 
-    <button id="submit-feedback" class="btn primary" style="margin-top:1rem;">Submit Feedback</button>
+    <button id="submit-feedback" class="btn primary" style="margin-top:1rem;">Submit Review</button>
 
     <p id="feedback-thanks" style="display:none; margin-top:1.5rem; color:#10b981; font-weight:500;">
-      Thank you for your feedback! ❤️
+      Thank you for your review! It has been added below.
     </p>
+
+    <!-- Reviews List -->
+    <div class="reviews-list" id="reviews-list"></div>
   </div>
 
 </section>
@@ -340,14 +383,13 @@
   © 2026 Galaxy Tech Corporation · Founded by Vedant Bhavsar
 </footer>
 
-<!-- Image Modal -->
 <div class="image-modal" id="imgModal">
   <span class="close-modal" onclick="closePreview()">×</span>
   <img id="modalImg">
 </div>
 
 <script>
-  // Real screenshots from your folder structure
+  // Screenshots
   const screenshots = [
     "assets/img/ai-1.png",
     "assets/img/ai-2.png",
@@ -360,9 +402,7 @@
     const img = document.createElement('img');
     img.src = src;
     img.alt = "Ved AI Screenshot";
-    img.onerror = () => {
-      img.src = "https://via.placeholder.com/300x600/1e293b/ffffff?text=Image+Not+Found";
-    };
+    img.onerror = () => { img.src = "https://via.placeholder.com/300x600/1e293b/ffffff?text=Image+Not+Found"; };
     img.onclick = () => showPreview(src);
     ssContainer.appendChild(img);
   });
@@ -383,26 +423,87 @@
   stars.forEach(star => {
     star.addEventListener('click', () => {
       selectedRating = parseInt(star.dataset.value);
-      stars.forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.value) >= selectedRating);
-      });
+      updateStars();
     });
-
     star.addEventListener('mouseover', () => {
       const val = parseInt(star.dataset.value);
-      stars.forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.value) >= val);
-      });
+      stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) >= val));
     });
-
-    star.addEventListener('mouseout', () => {
-      stars.forEach(s => {
-        s.classList.toggle('active', parseInt(s.dataset.value) >= selectedRating);
-      });
-    });
+    star.addEventListener('mouseout', updateStars);
   });
 
-  // Screenshot upload preview
+  function updateStars() {
+    stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) >= selectedRating));
+  }
+
+  // Reviews
+  const reviewsList = document.getElementById('reviews-list');
+  let reviews = JSON.parse(localStorage.getItem('vedAIReviews')) || [];
+
+  function renderReviews() {
+    reviewsList.innerHTML = '';
+    reviews.forEach(review => {
+      const item = document.createElement('div');
+      item.className = 'review-item';
+
+      let starsHTML = '';
+      for(let i=1; i<=5; i++) {
+        starsHTML += `<i class="fa-solid fa-star" style="color: ${i <= review.rating ? 'var(--star-active)' : '#4b5563'}"></i>`;
+      }
+
+      item.innerHTML = `
+        <div class="review-header">
+          <span class="review-user">${review.user}</span>
+          <span class="review-date">${review.date}</span>
+        </div>
+        <div class="review-stars">${starsHTML}</div>
+        <p class="review-text">${review.text || '<em>No comment provided</em>'}</p>
+        ${review.screenshot ? `<img src="${review.screenshot}" class="review-screenshot" alt="Review Screenshot">` : ''}
+      `;
+
+      reviewsList.appendChild(item);
+    });
+  }
+
+  renderReviews(); // Load saved reviews on page load
+
+  // Submit Review
+  document.getElementById('submit-feedback').addEventListener('click', () => {
+    const text = document.getElementById('feedback-text').value.trim();
+    if (selectedRating === 0 && !text) {
+      alert("Please give at least a rating or some feedback!");
+      return;
+    }
+
+    const previewImg = document.getElementById('preview-img');
+    const screenshot = previewImg.style.display === 'block' ? previewImg.src : null;
+
+    const newReview = {
+      user: "User " + Math.floor(Math.random() * 1000), // Fake name (real mein user login se aayega)
+      date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
+      rating: selectedRating,
+      text: text,
+      screenshot: screenshot
+    };
+
+    reviews.push(newReview);
+    localStorage.setItem('vedAIReviews', JSON.stringify(reviews));
+
+    renderReviews();
+
+    // Reset form
+    selectedRating = 0;
+    updateStars();
+    document.getElementById('feedback-text').value = '';
+    previewImg.style.display = 'none';
+    document.getElementById('feedback-thanks').style.display = 'block';
+
+    setTimeout(() => {
+      document.getElementById('feedback-thanks').style.display = 'none';
+    }, 4000);
+  });
+
+  // Upload preview
   document.getElementById('screenshot-upload').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -414,26 +515,6 @@
       };
       reader.readAsDataURL(file);
     }
-  });
-
-  // Submit Feedback (local demo)
-  document.getElementById('submit-feedback').addEventListener('click', () => {
-    const text = document.getElementById('feedback-text').value.trim();
-    if (selectedRating === 0 && !text) {
-      alert("Please give at least a rating or some feedback!");
-      return;
-    }
-
-    console.log("Feedback:", { rating: selectedRating, text, screenshot: document.getElementById('preview-img').src || null });
-
-    document.getElementById('feedback-thanks').style.display = 'block';
-    setTimeout(() => {
-      selectedRating = 0;
-      stars.forEach(s => s.classList.remove('active'));
-      document.getElementById('feedback-text').value = '';
-      document.getElementById('preview-img').style.display = 'none';
-      document.getElementById('feedback-thanks').style.display = 'none';
-    }, 3000);
   });
 </script>
 </body>
