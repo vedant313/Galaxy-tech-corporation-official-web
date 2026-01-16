@@ -19,6 +19,7 @@
       --border: rgba(99, 102, 241, 0.2);
       --glow: rgba(99, 102, 241, 0.35);
       --star-active: #fbbf24;
+      --star-inactive: #4b5563;
     }
 
     * { margin:0; padding:0; box-sizing:border-box; }
@@ -123,13 +124,13 @@
 
     .stars {
       font-size: 2.2rem;
-      color: #4b5563;
+      color: var(--star-inactive);
       cursor: pointer;
       margin: 1rem 0;
     }
 
     .star { transition: color 0.2s; }
-    .star:hover, .star.active { color: var(--star-active); }
+    .star.active { color: var(--star-active); }
 
     textarea {
       width: 100%;
@@ -218,9 +219,12 @@
     }
 
     .review-stars {
-      color: var(--star-active);
-      font-size: 1.1rem;
       margin-bottom: 0.5rem;
+    }
+
+    .review-stars i {
+      font-size: 1.1rem;
+      margin-right: 2px;
     }
 
     .review-text {
@@ -381,7 +385,7 @@
 </div>
 
 <script>
-  // Screenshots loading
+  // Screenshots
   const screenshots = [
     "assets/img/ai-1.png",
     "assets/img/ai-2.png",
@@ -408,7 +412,7 @@
     document.getElementById('imgModal').style.display = 'none';
   }
 
-  // Star Rating (form ke upar wale stars)
+  // Form stars (rating select karne wale)
   const stars = document.querySelectorAll('#rating-stars .star');
   let selectedRating = 0;
 
@@ -432,7 +436,7 @@
     star.addEventListener('mouseout', updateFormStars);
   });
 
-  // Reviews
+  // Reviews rendering
   const reviewsList = document.getElementById('reviews-list');
   let reviews = JSON.parse(localStorage.getItem('vedAIReviews')) || [];
 
@@ -442,9 +446,11 @@
       const item = document.createElement('div');
       item.className = 'review-item';
 
+      // Stars sahi se generate karo – jitne rating utne gold, baaki grey
       let starsHTML = '';
       for (let i = 1; i <= 5; i++) {
-        starsHTML += `<i class="fa-solid fa-star" style="color: ${i <= review.rating ? 'var(--star-active)' : '#4b5563'}"></i>`;
+        const isActive = i <= review.rating;
+        starsHTML += `<i class="fa-solid fa-star" style="color: ${isActive ? 'var(--star-active)' : 'var(--star-inactive)'}"></i>`;
       }
 
       item.innerHTML = `
@@ -461,7 +467,7 @@
     });
   }
 
-  renderReviews(); // Load on page open
+  renderReviews();
 
   // Submit Review
   document.getElementById('submit-feedback').addEventListener('click', () => {
@@ -487,7 +493,7 @@
 
     renderReviews();
 
-    // Reset form (but rating stars ko mat reset karo)
+    // Form reset – sirf text aur image, rating stars ko chhed mat
     document.getElementById('feedback-text').value = '';
     previewImg.style.display = 'none';
     document.getElementById('feedback-thanks').style.display = 'block';
