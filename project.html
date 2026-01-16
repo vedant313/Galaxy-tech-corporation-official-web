@@ -86,7 +86,6 @@
 
     h3 { margin-bottom: 1rem; color: var(--accent); }
 
-    /* Screenshots */
     .screenshots {
       display: flex;
       gap: 1rem;
@@ -108,7 +107,6 @@
 
     .screenshots img:hover { transform: scale(1.04); }
 
-    /* Meta */
     .meta {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -117,7 +115,6 @@
       font-size: 0.95rem;
     }
 
-    /* Feedback Section */
     .feedback-section {
       margin-top: 3rem;
       padding-top: 2rem;
@@ -191,7 +188,6 @@
 
     .project-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
 
-    /* Reviews List */
     .reviews-list {
       margin-top: 2.5rem;
     }
@@ -240,7 +236,6 @@
       display: block;
     }
 
-    /* Modal */
     .image-modal {
       display: none;
       position: fixed;
@@ -267,7 +262,6 @@
       cursor: pointer;
     }
 
-    /* Responsive */
     @media (max-width: 900px) {
       .project-grid { grid-template-columns: 1fr; }
       .screenshots img { height: 320px; }
@@ -346,7 +340,6 @@
     </div>
   </div>
 
-  <!-- Feedback & Reviews -->
   <div class="card feedback-section">
     <h3>Rate & Review This Project</h3>
     <p>Tell us what you think!</p>
@@ -373,7 +366,6 @@
       Thank you for your review! It has been added below.
     </p>
 
-    <!-- Reviews List -->
     <div class="reviews-list" id="reviews-list"></div>
   </div>
 
@@ -389,7 +381,7 @@
 </div>
 
 <script>
-  // Screenshots
+  // Screenshots loading
   const screenshots = [
     "assets/img/ai-1.png",
     "assets/img/ai-2.png",
@@ -416,25 +408,29 @@
     document.getElementById('imgModal').style.display = 'none';
   }
 
-  // Star Rating
-  const stars = document.querySelectorAll('.star');
+  // Star Rating (form ke upar wale stars)
+  const stars = document.querySelectorAll('#rating-stars .star');
   let selectedRating = 0;
+
+  function updateFormStars() {
+    stars.forEach(s => {
+      s.classList.toggle('active', parseInt(s.dataset.value) >= selectedRating);
+    });
+  }
 
   stars.forEach(star => {
     star.addEventListener('click', () => {
       selectedRating = parseInt(star.dataset.value);
-      updateStars();
+      updateFormStars();
     });
+
     star.addEventListener('mouseover', () => {
       const val = parseInt(star.dataset.value);
       stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) >= val));
     });
-    star.addEventListener('mouseout', updateStars);
-  });
 
-  function updateStars() {
-    stars.forEach(s => s.classList.toggle('active', parseInt(s.dataset.value) >= selectedRating));
-  }
+    star.addEventListener('mouseout', updateFormStars);
+  });
 
   // Reviews
   const reviewsList = document.getElementById('reviews-list');
@@ -447,7 +443,7 @@
       item.className = 'review-item';
 
       let starsHTML = '';
-      for(let i=1; i<=5; i++) {
+      for (let i = 1; i <= 5; i++) {
         starsHTML += `<i class="fa-solid fa-star" style="color: ${i <= review.rating ? 'var(--star-active)' : '#4b5563'}"></i>`;
       }
 
@@ -465,21 +461,21 @@
     });
   }
 
-  renderReviews(); // Load saved reviews on page load
+  renderReviews(); // Load on page open
 
   // Submit Review
   document.getElementById('submit-feedback').addEventListener('click', () => {
     const text = document.getElementById('feedback-text').value.trim();
+    const previewImg = document.getElementById('preview-img');
+    const screenshot = previewImg.style.display === 'block' ? previewImg.src : null;
+
     if (selectedRating === 0 && !text) {
       alert("Please give at least a rating or some feedback!");
       return;
     }
 
-    const previewImg = document.getElementById('preview-img');
-    const screenshot = previewImg.style.display === 'block' ? previewImg.src : null;
-
     const newReview = {
-      user: "User " + Math.floor(Math.random() * 1000), // Fake name (real mein user login se aayega)
+      user: "User " + Math.floor(Math.random() * 1000),
       date: new Date().toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' }),
       rating: selectedRating,
       text: text,
@@ -491,9 +487,7 @@
 
     renderReviews();
 
-    // Reset form
-    selectedRating = 0;
-    updateStars();
+    // Reset form (but rating stars ko mat reset karo)
     document.getElementById('feedback-text').value = '';
     previewImg.style.display = 'none';
     document.getElementById('feedback-thanks').style.display = 'block';
