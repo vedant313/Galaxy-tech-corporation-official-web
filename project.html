@@ -13,7 +13,7 @@
       --primary: #6366f1;
       --primary-gradient: linear-gradient(135deg, #6366f1, #a855f7);
       --accent: #a5b4fc;
-      --dark-bg: #030712;   
+      --dark-bg: #030712;
       --card-bg: rgba(15, 23, 42, 0.5);
       --text: #f1f5f9;
       --text-muted: #94a3b8;
@@ -255,9 +255,9 @@
   <div class="project-header">
     <div class="app-title">
       <img src="assets/img/vedai-logo.png" alt="Ved AI Logo">
-      <h1 id="title">Ved AI Assistant</h1>
+      <h1>Ved AI Assistant</h1>
     </div>
-    <p id="tagline">Smart AI assistant for coding & learning</p>
+    <p>Smart AI assistant for coding & learning</p>
   </div>
 
   <div class="project-grid">
@@ -265,24 +265,22 @@
     <!-- LEFT: Media / Screenshots -->
     <div class="project-media card">
       <h3>Screenshots</h3>
-      <div class="screenshots" id="screenshots">
-        <!-- JS se dynamically add honge -->
-      </div>
+      <div class="screenshots" id="screenshots"></div>
     </div>
 
     <!-- RIGHT: Info -->
     <div class="project-info card">
       <h3>About This App</h3>
-      <p id="description">Ved AI is your personal coding companion . Get instant help with code explanations, debugging, learning new concepts, and more – completely offline capable!</p>
+      <p>Ved AI is your personal coding companion powered by advanced AI. Get instant help with code explanations, debugging, learning new concepts, and more – completely offline capable!</p>
 
       <div class="meta">
-        <div><strong>Version:</strong> <span id="version">1.2.0</span></div>
-        <div><strong>Category:</strong> <span id="category">Productivity / AI</span></div>
-        <div><strong>Status:</strong> <span id="status">Active Development</span></div>
+        <div><strong>Version:</strong> <span>1.2.0</span></div>
+        <div><strong>Category:</strong> <span>Productivity / AI</span></div>
+        <div><strong>Status:</strong> <span>Active Development</span></div>
       </div>
 
       <h3>Key Features</h3>
-      <ul id="features">
+      <ul>
         <li>Offline AI responses</li>
         <li>Code explanation & suggestions</li>
         <li>Multi-language support</li>
@@ -294,13 +292,21 @@
       </a>
 
       <div class="project-actions">
-        <a id="download" href="#" class="btn primary">⬇ Download App</a>
+        <a href="downloads/ved-ai-assistant-v1.2.0.apk" 
+           download="Ved-AI-Assistant-v1.2.0.apk" 
+           class="btn primary">
+           ⬇ Download App
+        </a>
         <a href="index.html" class="btn outline">← Back to Home</a>
       </div>
+
+      <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem; text-align:center;">
+        Note: Direct APK for Android. Allow "Install from unknown sources" if prompted.
+      </p>
     </div>
   </div>
 
-  <!-- New: User Rating & Feedback -->
+  <!-- User Rating & Feedback -->
   <div class="card feedback-section">
     <h3>Rate & Review This Project</h3>
     <p>Tell us what you think!</p>
@@ -341,20 +347,22 @@
 </div>
 
 <script>
-  // Dummy screenshots (replace with your real ones)
+  // Real screenshots from your folder structure
   const screenshots = [
     "assets/img/ai-1.png",
-      "assets/img/ai-2.png",
-      "assets/img/ai-3.png",
-      "assets/img/ai-4.png",
+    "assets/img/ai-2.png",
+    "assets/img/ai-3.png",
+    "assets/img/ai-4.png"
   ];
 
-  
   const ssContainer = document.getElementById('screenshots');
   screenshots.forEach(src => {
     const img = document.createElement('img');
     img.src = src;
-    img.alt = "App Screenshot";
+    img.alt = "Ved AI Screenshot";
+    img.onerror = () => {
+      img.src = "https://via.placeholder.com/300x600/1e293b/ffffff?text=Image+Not+Found";
+    };
     img.onclick = () => showPreview(src);
     ssContainer.appendChild(img);
   });
@@ -394,7 +402,7 @@
     });
   });
 
-  // Screenshot Preview
+  // Screenshot upload preview
   document.getElementById('screenshot-upload').addEventListener('change', function(e) {
     const file = e.target.files[0];
     if (file) {
@@ -408,7 +416,7 @@
     }
   });
 
-  // Submit Feedback 
+  // Submit Feedback (local demo)
   document.getElementById('submit-feedback').addEventListener('click', () => {
     const text = document.getElementById('feedback-text').value.trim();
     if (selectedRating === 0 && !text) {
@@ -416,15 +424,10 @@
       return;
     }
 
-    console.log("Feedback submitted:", {
-      rating: selectedRating,
-      text: text,
-      screenshot: document.getElementById('preview-img').src || null
-    });
+    console.log("Feedback:", { rating: selectedRating, text, screenshot: document.getElementById('preview-img').src || null });
 
     document.getElementById('feedback-thanks').style.display = 'block';
     setTimeout(() => {
-      // Reset form
       selectedRating = 0;
       stars.forEach(s => s.classList.remove('active'));
       document.getElementById('feedback-text').value = '';
