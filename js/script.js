@@ -16,7 +16,7 @@ const apps = {
       "assets/img/ai-4.png",
     ],
     features: ["AI Chat", "Code Help", "Fast Performance"],
-    download: "#"
+    download: "downloads/ved-ai-assistant-v1.2.0.apk"
   },
 
   "utility": {
@@ -37,7 +37,6 @@ const apps = {
   }
 };
 
-
 /* ================= PROJECT PAGE LOGIC ================= */
 
 const params = new URLSearchParams(window.location.search);
@@ -46,7 +45,6 @@ const appKey = params.get("app");
 if (appKey && apps[appKey]) {
   const app = apps[appKey];
 
-  // BASIC INFO
   setText("title", app.title);
   setText("tagline", app.tagline);
   setText("description", app.description);
@@ -54,15 +52,15 @@ if (appKey && apps[appKey]) {
   setText("category", app.category);
   setText("status", app.status);
 
-  // DOWNLOAD
   const downloadBtn = document.getElementById("download");
-  if (downloadBtn) downloadBtn.href = app.download;
+  if (downloadBtn) {
+    downloadBtn.href = app.download;
+    downloadBtn.setAttribute("download", "Ved-AI-Assistant.apk");
+  }
 
-  // SCREENSHOTS 
   const shotsContainer = document.querySelector(".screenshots");
   if (shotsContainer) {
     shotsContainer.innerHTML = "";
-
     app.screenshots.forEach(src => {
       const img = document.createElement("img");
       img.src = src;
@@ -72,7 +70,6 @@ if (appKey && apps[appKey]) {
     });
   }
 
-  // FEATURES
   const featureList = document.getElementById("features");
   if (featureList) {
     featureList.innerHTML = "";
@@ -84,25 +81,22 @@ if (appKey && apps[appKey]) {
   }
 }
 
-
 /* ================= HELPER ================= */
 
 function setText(id, value) {
   const el = document.getElementById(id);
-  if (el) el.innerText = value;
+  if (el) el.textContent = value;
 }
-
 
 /* ================= IMAGE PREVIEW ================= */
 
 function openPreview(src) {
   const modal = document.getElementById("imgModal");
   const modalImg = document.getElementById("modalImg");
-
-  if (!modal || !modalImg) return;
-
-  modal.style.display = "flex";
-  modalImg.src = src;
+  if (modal && modalImg) {
+    modal.style.display = "flex";
+    modalImg.src = src;
+  }
 }
 
 function closePreview() {
@@ -110,24 +104,55 @@ function closePreview() {
   if (modal) modal.style.display = "none";
 }
 
-
 /* ================= CONTACT FORM ================= */
 
-function sendMail() {
-  const n = document.getElementById("name")?.value.trim();
-  const e = document.getElementById("email")?.value.trim();
-  const m = document.getElementById("message")?.value.trim();
+const sendBtn = document.getElementById("sendBtn");
+if (sendBtn) {
+  sendBtn.addEventListener("click", function() {
+    console.log("Send button clicked!");  // Debug: check if button click detect ho raha
 
-  if (!n || !e || !m) {
-    alert("Please fill all fields");
-    return;
-  }
+    const name = document.getElementById("name")?.value.trim();
+    const email = document.getElementById("email")?.value.trim();
+    const message = document.getElementById("message")?.value.trim();
 
-  const subject = encodeURIComponent(`New Client - ${n}`);
-  const body = encodeURIComponent(
-    `Name: ${n}\nEmail: ${e}\n\nMessage:\n${m}`
-  );
+    if (!name || !email || !message) {
+      alert("Please fill all fields: Name, Email and Message");
+      console.log("Validation failed");
+      return;
+    }
 
-  window.location.href =
-    `mailto:vedantb150@gmail.com?subject=${subject}&body=${body}`;
+    if (!email.includes("@") || !email.includes(".")) {
+      alert("Please enter a valid email address");
+      console.log("Invalid email");
+      return;
+    }
+
+    const subject = encodeURIComponent(`New Contact from ${name} - Galaxy Tech`);
+    const body = encodeURIComponent(
+      `Hello Vedant,\n\n` +
+      `Name: ${name}\n` +
+      `Email: ${email}\n\n` +
+      `Message:\n${message}\n\n` +
+      `Best regards,\n${name}`
+    );
+
+    const mailtoLink = `mailto:vedantb150@gmail.com?subject=${subject}&body=${body}`;
+
+    console.log("Mailto link generated:", mailtoLink);  // Debug: link check karne ke liye
+
+    // Email client kholne ka try
+    window.location.href = mailtoLink;
+
+    // Success alert (thoda delay se)
+    setTimeout(() => {
+      alert("Thank you! Your message is ready in your email app. Just press Send.");
+    }, 300);
+
+    // Form clear
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+  });
+} else {
+  console.error("Send button not found! Check id='sendBtn'");
 }
