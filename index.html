@@ -388,7 +388,7 @@
     </div>
     <div class="card">
       <h4>Your Next App</h4>
-      <p>upcoming project .</p>
+      <p>Exciting project coming soon – stay tuned!</p>
       <span style="color:var(--text-muted);">Coming Soon</span>
     </div>
   </div>
@@ -399,7 +399,7 @@
   <p class="text" style="max-width:800px; margin:0 auto; text-align:center; font-size:1.15rem; color:var(--text-muted);">
     Galaxy Tech Corporation is an independent technology startup founded by
     <strong>Vedant Bhavsar</strong>, a passionate developer with a vision
-    to create world-class technology products using AI, software engineering and innovation.
+    to create world-class technology products using strong coding skills, software engineering and innovation.
   </p>
 </section>
 
@@ -441,7 +441,7 @@
 
   if (sendBtn) {
     sendBtn.addEventListener("click", function () {
-      console.log("Send button clicked!");  
+      console.log("Send button clicked!");
 
       const name = document.getElementById("name")?.value.trim();
       const email = document.getElementById("email")?.value.trim();
@@ -470,17 +470,14 @@
 
       const mailtoLink = `mailto:vedantb150@gmail.com?subject=${subject}&body=${body}`;
 
-      console.log("Generated mailto link:", mailtoLink);  
+      console.log("Generated mailto link:", mailtoLink);
 
-      // Email client open 
       window.location.href = mailtoLink;
 
-      // Success message with small delay
       setTimeout(() => {
         alert("Thank you! Your message is ready in your email app. Just press Send.");
       }, 300);
 
-      // Form clear
       document.getElementById("name").value = "";
       document.getElementById("email").value = "";
       document.getElementById("message").value = "";
@@ -493,7 +490,7 @@
   const apps = {
     "Ved-AI": {
       title: "Ved AI",
-      tagline: "AI for coding, learning and automation.",
+      tagline: "AI assistant for coding, learning and automation.",
       description:
         "Ved AI is designed to help developers and learners with AI-powered chat, coding help and smart automation tools.",
       version: "v0.9 Beta",
