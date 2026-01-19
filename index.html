@@ -153,6 +153,11 @@
       box-shadow: 0 0 20px var(--glow);
     }
 
+    .btn.small {
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+    }
+
     .hero-right.card {
       background: var(--card-bg);
       backdrop-filter: blur(10px);
@@ -191,12 +196,63 @@
       padding: 2rem;
       transition: transform 0.3s, box-shadow 0.3s;
       backdrop-filter: blur(12px);
+      overflow: hidden;
     }
 
     .card:hover {
       transform: translateY(-10px);
       box-shadow: 0 15px 40px var(--glow);
       border-color: var(--primary);
+    }
+
+    /* Large thumbnail for both Services & Projects */
+    .thumbnail {
+      height: 160px;
+      overflow: hidden;
+      margin: -2rem -2rem 1.5rem -2rem;
+      border-radius: 16px 16px 0 0;
+      background: rgba(0,0,0,0.4);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .card:hover .thumbnail img {
+      transform: scale(1.08);
+    }
+
+    .placeholder-thumb {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #2d3748, #1a202c);
+      color: var(--text-muted);
+      font-size: 1.4rem;
+      font-weight: 600;
+    }
+
+    .project-links {
+      margin-top: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .github-icon {
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .github-icon:hover {
+      color: var(--accent);
+      transform: scale(1.2);
     }
 
     .grid-2 {
@@ -280,6 +336,10 @@
       .logo {
         font-size: 1.8rem;
       }
+
+      .thumbnail {
+        height: 140px;
+      }
     }
 
     @media (max-width: 480px) {
@@ -299,6 +359,10 @@
 
       .hero-actions {
         flex-direction: column;
+      }
+
+      .thumbnail {
+        height: 120px;
       }
     }
   </style>
@@ -323,7 +387,7 @@
 
 <section class="hero container">
   <div class="hero-left">
-    <span class="badge"></span>
+    <span class="badge">Official Technology Company</span>
     <h1>Building Powerful Apps,<br>AI & Future Technology</h1>
     <p>Galaxy Tech Corporation is focused on AI development, app development, web development and future technology innovation.</p>
 
@@ -355,41 +419,77 @@
   </div>
 </section>
 
+<!-- ================= SERVICES ================= -->
 <section id="services" class="container section">
   <h2>Services</h2>
   <div class="grid-3">
     <div class="card">
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80" alt="AI Development" />
+      </div>
       <h3>AI Development</h3>
       <p>Chatbots, automation, AI tools and intelligent systems.</p>
     </div>
+
     <div class="card">
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1551650975-60cb5c5d7d9d?w=800&auto=format&fit=crop&q=80" alt="App Development" />
+      </div>
       <h3>App Development</h3>
       <p>Android apps, utilities, tools and offline-first solutions.</p>
     </div>
+
     <div class="card">
+      <div class="thumbnail">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80" alt="Web Development" />
+      </div>
       <h3>Web Development</h3>
       <p>Modern websites, dashboards and full-stack platforms.</p>
     </div>
   </div>
 </section>
 
+<!-- ================= PROJECTS ================= -->
 <section id="projects" class="container section">
   <h2>My Apps & Projects</h2>
   <div class="grid-3">
     <div class="card">
+      <div class="thumbnail">
+        <img src="assets/img/ai-1.png" alt="Ved AI Assistant" />
+      </div>
       <h4>Ved AI Assistant</h4>
       <p>Smart AI assistant for coding & learning.</p>
-      <a href="project.html?app=Ved-AI" style="color:var(--primary);">View Details →</a>
+      <div class="project-links">
+        <a href="project.html?app=Ved-AI" class="btn small primary">View Details →</a>
+        <a href="https://github.com/vedantbhavsar/ved-ai" target="_blank" class="github-icon" title="View on GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
     </div>
+
     <div class="card">
+      <div class="thumbnail">
+        <img src="assets/img/utility-1.png" alt="Offline Utility App" />
+      </div>
       <h4>Offline Utility App</h4>
       <p>Low-internet usage smart application.</p>
-      <a href="project.html?app=utility" style="color:var(--primary);">View Details →</a>
+      <div class="project-links">
+        <a href="project.html?app=utility" class="btn small primary">View Details →</a>
+        <a href="https://github.com/vedant313" target="_blank" class="github-icon" title="View on GitHub">
+          <i class="fa-brands fa-github"></i>
+        </a>
+      </div>
     </div>
+
     <div class="card">
+      <div class="thumbnail">
+        <div class="placeholder-thumb">Coming Soon</div>
+      </div>
       <h4>Your Next App</h4>
       <p>Exciting project coming soon – stay tuned!</p>
-      <span style="color:var(--text-muted);">Coming Soon</span>
+      <div class="project-links">
+        <span style="color:var(--text-muted);">Coming Soon</span>
+      </div>
     </div>
   </div>
 </section>
@@ -403,7 +503,6 @@
   </p>
 </section>
 
-<!-- ================= CONTACT ================= -->
 <section id="contact" class="container section contact">
   <h2>Get in Touch</h2>
   <div class="grid-2">
