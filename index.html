@@ -255,6 +255,25 @@
       transform: scale(1.2);
     }
 
+    /* Social Icons */
+    .social-icons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+      justify-content: center;
+    }
+
+    .social-icon {
+      color: var(--text-muted);
+      font-size: 1.8rem;
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      color: var(--accent);
+      transform: scale(1.2);
+    }
+
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -381,6 +400,12 @@
       <a href="https://github.com/vedant313" target="_blank" title="GitHub">
         <i class="fa-brands fa-github"></i>
       </a>
+      <a href="https://instagram.com/your_instagram_handle" target="_blank" title="Instagram">
+        <i class="fa-brands fa-instagram"></i>
+      </a>
+      <a href="https://wa.me/918208581567" target="_blank" title="WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+      </a>
     </nav>
   </div>
 </header>
@@ -503,6 +528,7 @@
   </p>
 </section>
 
+<!-- ================= CONTACT ================= -->
 <section id="contact" class="container section contact">
   <h2>Get in Touch</h2>
   <div class="grid-2">
@@ -516,6 +542,29 @@
           github.com/vedant313
         </a>
       </p>
+      <p>
+        <strong>Instagram:</strong>
+        <a href="https://instagram.com/your_instagram_handle" target="_blank" style="color:var(--primary);">
+          instagram.com/your_instagram_handle
+        </a>
+      </p>
+      <p>
+        <strong>WhatsApp:</strong>
+        <a href="https://wa.me/918208581567" target="_blank" style="color:var(--primary);">
+          Chat on WhatsApp
+        </a>
+      </p>
+      <div class="social-icons">
+        <a href="https://github.com/vedant313" target="_blank" class="social-icon">
+          <i class="fa-brands fa-github"></i>
+        </a>
+        <a href="https://instagram.com/" target="_blank" class="social-icon">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="https://wa.me/918208581567" target="_blank" class="social-icon">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
       <p style="margin-top:1.5rem;">Open for freelance, startup & collaboration work.</p>
     </div>
 
@@ -532,6 +581,17 @@
 
 <footer class="footer">
   © 2026 Galaxy Tech Corporation · Founded by Vedant Bhavsar
+  <div class="social-icons">
+    <a href="https://github.com/vedant313" target="_blank" class="social-icon">
+      <i class="fa-brands fa-github"></i>
+    </a>
+    <a href="https://instagram.com/your_instagram_handle" target="_blank" class="social-icon">
+      <i class="fa-brands fa-instagram"></i>
+    </a>
+    <a href="https://wa.me/919999999999" target="_blank" class="social-icon">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
 </footer>
 
 <script>
