@@ -209,7 +209,7 @@ nav a:hover::after {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
-}
+} 
 
 .card {
   background: linear-gradient(145deg, rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.9));
