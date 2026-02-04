@@ -115,22 +115,6 @@
       margin-bottom: 2.5rem;
     }
 
-    .hero-highlight {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      margin-bottom: 2rem;
-    }
-
-    .hero-highlight span {
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--border);
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      font-size: 0.95rem;
-      color: var(--accent);
-    }
-
     .hero-actions {
       display: flex;
       gap: 1rem;
@@ -205,12 +189,6 @@
       gap: 2rem;
     }
 
-    .grid-4 {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-    }
-
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
@@ -225,49 +203,6 @@
       transform: translateY(-10px);
       box-shadow: 0 15px 40px var(--glow);
       border-color: var(--primary);
-    }
-
-    .stat-card {
-      text-align: center;
-      padding: 2rem 1.5rem;
-    }
-
-    .stat-card h3 {
-      font-size: 2rem;
-      margin-bottom: 0.4rem;
-      color: var(--accent);
-    }
-
-    .stat-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    .service-list {
-      list-style: none;
-      margin-top: 1.2rem;
-      padding-left: 0;
-      color: var(--text-muted);
-      display: grid;
-      gap: 0.6rem;
-    }
-
-    .service-list li {
-      display: flex;
-      gap: 0.6rem;
-      align-items: center;
-    }
-
-    .service-list i {
-      color: var(--accent);
-    }
-
-    .cta {
-      text-align: center;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.2), rgba(168, 85, 247, 0.25));
-      border: 1px solid var(--border);
-      padding: 3rem 2rem;
-      border-radius: 20px;
     }
 
     /* Large thumbnail for both Services & Projects */
@@ -405,10 +340,6 @@
         grid-template-columns: 1fr;
       }
 
-      .grid-4 {
-        grid-template-columns: 1fr 1fr;
-      }
-
       h2 {
         font-size: 2.4rem;
       }
@@ -452,10 +383,6 @@
       .thumbnail {
         height: 120px;
       }
-
-      .grid-4 {
-        grid-template-columns: 1fr;
-      }
     }
   </style>
 </head>
@@ -485,14 +412,9 @@
 
 <section class="hero container">
   <div class="hero-left">
-    <span class="badge">Future-ready AI & Web Studio</span>
+    <span class="badge"></span>
     <h1>Building Powerful Apps,<br>AI & Future Technology</h1>
     <p>Galaxy Tech Corporation is focused on AI development, app development, web development and future technology innovation.</p>
-    <div class="hero-highlight">
-      <span>AI Automation</span>
-      <span>Product Design</span>
-      <span>Full-Stack Delivery</span>
-    </div>
 
     <div class="hero-actions">
       <a href="#contact" class="btn primary">Get in Touch</a>
@@ -522,27 +444,6 @@
   </div>
 </section>
 
-<section class="container section">
-  <div class="grid-4">
-    <div class="card stat-card">
-      <h3>25+</h3>
-      <p>Products & Experiments</p>
-    </div>
-    <div class="card stat-card">
-      <h3>5+</h3>
-      <p>Industries Served</p>
-    </div>
-    <div class="card stat-card">
-      <h3>100%</h3>
-      <p>Client-Focused Delivery</p>
-    </div>
-    <div class="card stat-card">
-      <h3>24/7</h3>
-      <p>Support & Monitoring</p>
-    </div>
-  </div>
-</section>
-
 <!-- ================= SERVICES ================= -->
 <section id="services" class="container section">
   <h2>Services</h2>
@@ -553,11 +454,6 @@
       </div>
       <h3>AI Development</h3>
       <p>Chatbots, automation, AI tools and intelligent systems.</p>
-      <ul class="service-list">
-        <li><i class="fa-solid fa-check"></i> AI assistants & copilots</li>
-        <li><i class="fa-solid fa-check"></i> Workflow automation</li>
-        <li><i class="fa-solid fa-check"></i> Model integration</li>
-      </ul>
     </div>
 
     <div class="card">  
@@ -566,11 +462,6 @@
       </div>
       <h3>App Development</h3>
       <p>Android apps, utilities, tools and offline-first solutions.</p>
-      <ul class="service-list">
-        <li><i class="fa-solid fa-check"></i> Android & Flutter</li>
-        <li><i class="fa-solid fa-check"></i> UI/UX design</li>
-        <li><i class="fa-solid fa-check"></i> Play Store launch</li>
-      </ul>
     </div>
 
     <div class="card">
@@ -579,11 +470,6 @@
       </div>
       <h3>Web Development</h3>
       <p>Modern websites, dashboards and full-stack platforms.</p>
-      <ul class="service-list">
-        <li><i class="fa-solid fa-check"></i> Landing pages</li>
-        <li><i class="fa-solid fa-check"></i> Admin dashboards</li>
-        <li><i class="fa-solid fa-check"></i> API integration</li>
-      </ul>
     </div>
   </div>
 </section>
@@ -640,18 +526,6 @@
     <strong>Vedant Bhavsar</strong>, a passionate developer with a vision
     to create world-class technology products using strong coding skills, software engineering and innovation.
   </p>
-</section>
-
-<section class="container section">
-  <div class="cta">
-    <h2>Let’s Build Your Next Product</h2>
-    <p style="max-width:720px; margin:0 auto 2rem; color:var(--text-muted);">
-      From idea to launch, we design, build, and ship reliable digital products that scale.
-      Share your goals and get a clear roadmap, timeline, and execution plan.
-    </p>
-    <a href="#contact" class="btn primary">Start a Project</a>
-    <a href="#projects" class="btn outline">Explore Work</a>
-  </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
