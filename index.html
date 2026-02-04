@@ -35,6 +35,16 @@
       line-height: 1.6;
     }
 
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 80% 10%, rgba(99, 102, 241, 0.18), transparent 45%),
+        radial-gradient(circle at 20% 80%, rgba(168, 85, 247, 0.18), transparent 55%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -80,6 +90,14 @@
       color: var(--accent);
     }
 
+    nav a:focus-visible,
+    .btn:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+    }
+
     .hero {
       padding: 8rem 0 6rem;
       display: grid;
@@ -113,6 +131,14 @@
       font-size: 1.2rem;
       color: var(--text-muted);
       margin-bottom: 2.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-muted);
+      max-width: 720px;
+      margin: -2rem auto 3.5rem;
+      font-size: 1.05rem;
     }
 
     .hero-actions {
@@ -205,6 +231,66 @@
       border-color: var(--primary);
     }
 
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1.5rem;
+    }
+
+    .stat-card h3 {
+      font-size: 2.6rem;
+      margin-bottom: 0.4rem;
+      background: var(--primary-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .pill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.5rem;
+    }
+
+    .pill {
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(99, 102, 241, 0.08);
+      color: var(--accent);
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.6rem;
+    }
+
+    .process-card {
+      padding: 1.8rem;
+    }
+
+    .process-card span {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: rgba(99, 102, 241, 0.2);
+      color: var(--accent);
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
     /* Large thumbnail for both Services & Projects */
     .thumbnail {
       height: 160px;
@@ -295,6 +381,11 @@
       font-size: 1rem;
     }
 
+    input::placeholder,
+    textarea::placeholder {
+      color: rgba(148, 163, 184, 0.8);
+    }
+
     textarea {
       min-height: 140px;
       resize: vertical;
@@ -344,6 +435,11 @@
         font-size: 2.4rem;
       }
 
+      .stats-grid,
+      .process-grid {
+        grid-template-columns: 1fr;
+      }
+
       nav {
         display: none;
       }
@@ -362,22 +458,74 @@
     }
 
     @media (max-width: 480px) {
+      .container {
+        padding: 0 1.1rem;
+      }
+
+      .section {
+        padding: 4.5rem 0;
+      }
+
       .hero {
-        padding: 5rem 0 3rem;
+        padding: 4.5rem 0 3rem;
       }
 
       .hero h1 {
-        font-size: 2.4rem;
+        font-size: 2.2rem;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+      }
+
+      .hero-actions {
+        gap: 0.75rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+
+      .badge {
+        font-size: 0.85rem;
+      }
+
+      h2 {
+        font-size: 2.1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1rem;
+        margin: -1.5rem auto 2.5rem;
+      }
+
+      .card {
+        padding: 1.6rem;
+      }
+
+      .thumbnail {
+        height: 120px;
+        margin: -1.6rem -1.6rem 1.2rem -1.6rem;
+      }
+
+      .stats-grid,
+      .process-grid {
+        gap: 1.25rem;
+      }
+
+      .stat-card h3 {
+        font-size: 2.2rem;
+      }
+
+      .process-card span {
+        width: 36px;
+        height: 36px;
       }
 
       .btn {
         padding: 0.95rem 1.6rem;
         width: 100%;
         justify-content: center;
-      }
-
-      .hero-actions {
-        flex-direction: column;
       }
 
       .thumbnail {
@@ -412,7 +560,7 @@
 
 <section class="hero container">
   <div class="hero-left">
-    <span class="badge"></span>
+    <span class="badge">Trusted by founders & creators</span>
     <h1>Building Powerful Apps,<br>AI & Future Technology</h1>
     <p>Galaxy Tech Corporation is focused on AI development, app development, web development and future technology innovation.</p>
 
@@ -447,6 +595,7 @@
 <!-- ================= SERVICES ================= -->
 <section id="services" class="container section">
   <h2>Services</h2>
+  <p class="section-subtitle">End-to-end product engineering for startups and ambitious teams — from strategy to scalable delivery.</p>
   <div class="grid-3">
     <div class="card">
       <div class="thumbnail">
@@ -474,9 +623,29 @@
   </div>
 </section>
 
+<section class="container section">
+  <h2>Why Work With Us</h2>
+  <p class="section-subtitle">We combine engineering depth with design precision, helping teams ship faster without losing quality.</p>
+  <div class="stats-grid">
+    <div class="card stat-card">
+      <h3>10+</h3>
+      <p>Products delivered from MVP to scale</p>
+    </div>
+    <div class="card stat-card">
+      <h3>24/7</h3>
+      <p>Support window for launches & hotfixes</p>
+    </div>
+    <div class="card stat-card">
+      <h3>100%</h3>
+      <p>Focus on performance, security & UX</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= PROJECTS ================= -->
 <section id="projects" class="container section">
   <h2>My Apps & Projects</h2>
+  <p class="section-subtitle">A snapshot of recent builds — thoughtful interfaces, robust architecture, and measurable results.</p>
   <div class="grid-3">
     <div class="card">
       <div class="thumbnail">
@@ -526,11 +695,45 @@
     <strong>Vedant Bhavsar</strong>, a passionate developer with a vision
     to create world-class technology products using strong coding skills, software engineering and innovation.
   </p>
+  <div class="pill-list" style="justify-content:center;">
+    <span class="pill">AI Strategy</span>
+    <span class="pill">Product Design</span>
+    <span class="pill">Full-stack Engineering</span>
+    <span class="pill">Launch & Growth</span>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>Our Delivery Process</h2>
+  <p class="section-subtitle">Clear steps that keep you in the loop and move fast from idea to launch.</p>
+  <div class="process-grid">
+    <div class="card process-card">
+      <span>1</span>
+      <h4>Discover</h4>
+      <p>We map your goals, users, and success metrics to define the right product scope.</p>
+    </div>
+    <div class="card process-card">
+      <span>2</span>
+      <h4>Design</h4>
+      <p>UX flows, visual systems, and clickable prototypes that align every stakeholder.</p>
+    </div>
+    <div class="card process-card">
+      <span>3</span>
+      <h4>Build</h4>
+      <p>Agile development with weekly demos, performance-first engineering, and QA.</p>
+    </div>
+    <div class="card process-card">
+      <span>4</span>
+      <h4>Launch</h4>
+      <p>Release support, analytics setup, and optimization to drive adoption.</p>
+    </div>
+  </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
 <section id="contact" class="container section contact">
   <h2>Get in Touch</h2>
+  <p class="section-subtitle">Tell us about your idea and we’ll craft a roadmap to bring it to life.</p>
   <div class="grid-2">
     <div class="card">
       <h3>Contact Info</h3>
