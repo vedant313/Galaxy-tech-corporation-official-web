@@ -35,6 +35,14 @@
       line-height: 1.6;
     }
 
+    a:focus-visible,
+    button:focus-visible,
+    input:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+
     .container {
       max-width: 1200px;
       margin: 0 auto;
@@ -49,6 +57,11 @@
       z-index: 1000;
       padding: 1rem 0;
       border-bottom: 1px solid var(--border);
+    }
+
+    .topbar .btn {
+      padding: 0.6rem 1.4rem;
+      font-size: 0.9rem;
     }
 
     .nav {
@@ -115,6 +128,39 @@
       margin-bottom: 2.5rem;
     }
 
+    .hero .trusted {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-top: 2.5rem;
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .avatar-stack {
+      display: flex;
+      align-items: center;
+    }
+
+    .avatar-stack span {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid var(--border);
+      margin-left: -10px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .hero-left .trusted strong {
+      color: var(--text);
+    }
+
     .hero-actions {
       display: flex;
       gap: 1rem;
@@ -166,12 +212,39 @@
       padding: 2rem;
     }
 
+    .hero-right h3 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .hero-right .insights {
+      display: grid;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .insight {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+    }
+
+    .insight i {
+      color: var(--accent);
+      font-size: 1.1rem;
+      margin-top: 0.2rem;
+    }
+
     .mobile-founder {
       display: none;
     }
 
     .section {
       padding: 6rem 0;
+    }
+
+    .section.lead {
+      padding-top: 3rem;
     }
 
     h2 {
@@ -197,6 +270,45 @@
       transition: transform 0.3s, box-shadow 0.3s;
       backdrop-filter: blur(12px);
       overflow: hidden;
+    }
+
+    .card p {
+      color: var(--text-muted);
+    }
+
+    .label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3rem;
+    }
+
+    .stat {
+      padding: 1.6rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.6);
+      text-align: center;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 2rem;
+      color: white;
+      margin-bottom: 0.4rem;
+    }
+
+    .stat span {
+      color: var(--text-muted);
+      font-size: 0.95rem;
     }
 
     .card:hover {
@@ -280,6 +392,70 @@
       gap: 2.5rem;
     }
 
+    .highlight-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+
+    .highlight {
+      padding: 1.6rem;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(15, 23, 42, 0.5);
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .highlight i {
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      counter-reset: step;
+    }
+
+    .process .card {
+      position: relative;
+      padding-top: 3.2rem;
+    }
+
+    .process .card::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      position: absolute;
+      top: 1.2rem;
+      left: 1.6rem;
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .testimonials {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .testimonial {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .testimonial strong {
+      color: white;
+    }
+
+    .testimonial span {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
     form {
       display: flex;
       flex-direction: column;
@@ -293,6 +469,12 @@
       background: rgba(15, 23, 42, 0.6);
       color: white;
       font-size: 1rem;
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
     }
 
     textarea {
@@ -337,6 +519,13 @@
       }
 
       .grid-3, .grid-2 {
+        grid-template-columns: 1fr;
+      }
+
+      .stats,
+      .highlight-grid,
+      .process,
+      .testimonials {
         grid-template-columns: 1fr;
       }
 
@@ -395,6 +584,7 @@
     <nav>
       <a href="#about">About</a>
       <a href="#services">Services</a>
+      <a href="#why">Why Us</a>
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
       <a href="https://github.com/vedant313" target="_blank" title="GitHub">
@@ -407,14 +597,15 @@
         <i class="fa-brands fa-whatsapp"></i>
       </a>
     </nav>
+    <a href="#contact" class="btn primary">Book a Call</a>
   </div>
 </header>
 
 <section class="hero container">
   <div class="hero-left">
-    <span class="badge"></span>
+    <span class="badge">Trusted by founders & creators</span>
     <h1>Building Powerful Apps,<br>AI & Future Technology</h1>
-    <p>Galaxy Tech Corporation is focused on AI development, app development, web development and future technology innovation.</p>
+    <p>Galaxy Tech Corporation builds AI solutions, mobile apps, and modern web platforms that feel premium, launch fast, and scale with your vision.</p>
 
     <div class="hero-actions">
       <a href="#contact" class="btn primary">Get in Touch</a>
@@ -422,6 +613,16 @@
       <a href="https://github.com/vedant313" target="_blank" class="btn outline">
         <i class="fa-brands fa-github"></i> GitHub
       </a>
+    </div>
+
+    <div class="trusted">
+      <div class="avatar-stack">
+        <span>AI</span>
+        <span>UX</span>
+        <span>AP</span>
+        <span>⚡</span>
+      </div>
+      <div><strong>Fast delivery</strong> with strategic product guidance.</div>
     </div>
   </div>
 
@@ -431,6 +632,22 @@
     <p style="margin-top:1.2rem;">
       🔗 <a href="https://github.com/vedant313" target="_blank" style="color:var(--accent);">github.com/vedant313</a>
     </p>
+    <div class="insights">
+      <div class="insight">
+        <i class="fa-solid fa-bolt"></i>
+        <div>
+          <strong>Ship in weeks, not months.</strong>
+          <p>Lean sprints with clear milestones and weekly demos.</p>
+        </div>
+      </div>
+      <div class="insight">
+        <i class="fa-solid fa-shield"></i>
+        <div>
+          <strong>Quality you can trust.</strong>
+          <p>UX polish, performance tuning, and security-first builds.</p>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -444,6 +661,55 @@
   </div>
 </section>
 
+<section class="container section lead">
+  <div style="text-align:center; max-width:780px; margin:0 auto;">
+    <span class="label">What you get</span>
+    <h2>Launch-ready product teams for founders</h2>
+    <p style="color:var(--text-muted); font-size:1.05rem;">
+      From idea validation to production launches, we align strategy, design, and engineering so your product feels world-class from day one.
+    </p>
+  </div>
+  <div class="stats">
+    <div class="stat">
+      <strong>30+</strong>
+      <span>Apps shipped & iterated</span>
+    </div>
+    <div class="stat">
+      <strong>3x</strong>
+      <span>Faster MVP launch cycles</span>
+    </div>
+    <div class="stat">
+      <strong>95%</strong>
+      <span>Client satisfaction rate</span>
+    </div>
+    <div class="stat">
+      <strong>24/7</strong>
+      <span>Support & iteration loop</span>
+    </div>
+  </div>
+</section>
+
+<section id="why" class="container section">
+  <h2>Why Galaxy Tech</h2>
+  <div class="highlight-grid">
+    <div class="highlight">
+      <i class="fa-solid fa-layer-group"></i>
+      <h3>Product strategy</h3>
+      <p>We translate your idea into a clear roadmap with measurable outcomes.</p>
+    </div>
+    <div class="highlight">
+      <i class="fa-solid fa-compass-drafting"></i>
+      <h3>Design that converts</h3>
+      <p>Pixel-precise interfaces backed by research, accessibility, and conversion best practices.</p>
+    </div>
+    <div class="highlight">
+      <i class="fa-solid fa-code"></i>
+      <h3>Engineering excellence</h3>
+      <p>Robust architecture, clean code, and scalable infrastructure built to last.</p>
+    </div>
+  </div>
+</section>
+
 <!-- ================= SERVICES ================= -->
 <section id="services" class="container section">
   <h2>Services</h2>
@@ -453,7 +719,7 @@
         <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&auto=format&fit=crop&q=80" alt="AI Development" />
       </div>
       <h3>AI Development</h3>
-      <p>Chatbots, automation, AI tools and intelligent systems.</p>
+      <p>Chatbots, automation, AI tools and intelligent systems tailored to your users.</p>
     </div>
 
     <div class="card">  
@@ -461,7 +727,7 @@
         <img src="https://img.freepik.com/free-photo/representations-user-experience-interface-design_23-2150104494.jpg" alt="App Development" />
       </div>
       <h3>App Development</h3>
-      <p>Android apps, utilities, tools and offline-first solutions.</p>
+      <p>Android apps, utilities, tools, and offline-first solutions with smooth UX.</p>
     </div>
 
     <div class="card">
@@ -469,7 +735,29 @@
         <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&auto=format&fit=crop&q=80" alt="Web Development" />
       </div>
       <h3>Web Development</h3>
-      <p>Modern websites, dashboards and full-stack platforms.</p>
+      <p>Modern websites, dashboards, and full-stack platforms with performance focus.</p>
+    </div>
+  </div>
+</section>
+
+<section class="container section">
+  <h2>How We Work</h2>
+  <div class="process">
+    <div class="card">
+      <h3>Discover</h3>
+      <p>We align on goals, target users, and success metrics before writing code.</p>
+    </div>
+    <div class="card">
+      <h3>Design</h3>
+      <p>UX-first flows and UI prototypes to validate experiences early.</p>
+    </div>
+    <div class="card">
+      <h3>Build</h3>
+      <p>Agile sprints with weekly updates, QA, and transparent progress.</p>
+    </div>
+    <div class="card">
+      <h3>Launch</h3>
+      <p>Performance tuning, analytics setup, and post-launch growth support.</p>
     </div>
   </div>
 </section>
@@ -526,6 +814,33 @@
     <strong>Vedant Bhavsar</strong>, a passionate developer with a vision
     to create world-class technology products using strong coding skills, software engineering and innovation.
   </p>
+</section>
+
+<section class="container section">
+  <h2>Founder Stories</h2>
+  <div class="testimonials">
+    <div class="card testimonial">
+      <p>"Galaxy Tech delivered a premium MVP in record time. The UX polish was exactly what we needed for investor demos."</p>
+      <div>
+        <strong>Startup Founder</strong>
+        <span>AI productivity tool</span>
+      </div>
+    </div>
+    <div class="card testimonial">
+      <p>"From strategy to launch, the team communicated clearly and executed with speed. Our users love the experience."</p>
+      <div>
+        <strong>Product Lead</strong>
+        <span>Fintech platform</span>
+      </div>
+    </div>
+    <div class="card testimonial">
+      <p>"The offline-first app build was optimized and reliable. Great attention to detail and a smooth handoff."</p>
+      <div>
+        <strong>Operations Manager</strong>
+        <span>Field services company</span>
+      </div>
+    </div>
+  </div>
 </section>
 
 <!-- ================= CONTACT ================= -->
